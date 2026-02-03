@@ -21,13 +21,13 @@
   <title>Burning Tree</title>
 </head>
 <body>
-  <h1 style="color: #00ff00; text-align: center;>Burning Tree</h1>;
+  <h1 style="color: #00ff00; text-align: center;">Burning Tree</h1>
   <div class="tree">
     <ul>
-      <li>
+      <li>Hellfire Citadel
         <ul>
-          <li></li>
-          <li></li>
+          <li>Ramparts</li>
+          <li>Blood Furnace</li>
         </ul>
       </li>
     </ul>
@@ -37,20 +37,21 @@
     items.forEach(item => {
       const children = item.querySelector('ul');
       if (children) {
-        item.style.display = 'none';
-        item.textContent = '+ ' + item.TextContent;
+        children.style.display = 'none';
+        item.prepend(document.createTextNode('+ '));
         item.addEventListener('click', e => {
           e.stopPropagation();
           if (children.style.display === 'none') {
             children.style.display = 'block';
-            item.textContent = '- ' + item.textContent.slice(2);
+            item.firstChild.textContent = '- ';
           }
           else {
             children.style.display = 'none';
-            item.textContent = '+ ' + item.textContent.slice(2);
+            item.firstChild.textContent = '+ ';
           }
-        }
+        });
       }
+    });
   </script>
 </body>
 </html>

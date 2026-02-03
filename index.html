@@ -46,7 +46,15 @@
     items.forEach(item => {
       const children = item.querySelector('ul');
       if (children) {
-        children.style.display = 'none';
+
+        const isTopLevel = item.parentElement.classList.contains('tree');
+        if (!isTopLevel) {
+          children.style.display = 'none';
+        else {
+          item.firstChild.textContent = '- ';
+        }
+        }
+        
         item.prepend(document.createTextNode('+ '));
         item.addEventListener('click', e => {
           e.stopPropagation();

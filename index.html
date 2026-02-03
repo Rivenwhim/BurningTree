@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      background-color: #2c2c2c;
+      color: #d3d3d3;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .tree ul {
+      display: none;
+      margin-left: 20px;
+    }
+  </style>
+  <title>Burning Tree</title>
+</head>
+<body>
+  <h1 style="color: #00ff00; text-align: center;>Burning Tree</h1>;
+  <div class="tree">
+    <ul>
+      <li>
+        <ul>
+          <li></li>
+          <li></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <script>
+    const items = document.querySelectorAll('.tree li');
+    items.forEach(item => {
+      const children = item.querySelector('ul');
+      if (children) {
+        item.style.cursor = 'pointer';
+        item.addEventListener('click', e => {
+          e.stopPropagation();
+          if (children.style.display === 'none') {
+            children.style.display = 'block';
+          }
+          else {
+            children.style.display = 'none';
+          }
+        }
+      }
+  </script>
+</body>
+</html>

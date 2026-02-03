@@ -10,8 +10,12 @@
       padding: 20px;
     }
     .tree ul {
-      display: none;
+      list-style-type: none;
       margin-left: 20px;
+      padding-left: 0;
+    }
+    .tree li {
+      cursor: pointer;
     }
   </style>
   <title>Burning Tree</title>
@@ -33,14 +37,17 @@
     items.forEach(item => {
       const children = item.querySelector('ul');
       if (children) {
-        item.style.cursor = 'pointer';
+        item.style.display = 'none';
+        item.textContent = '+ ' + item.TextContent;
         item.addEventListener('click', e => {
           e.stopPropagation();
           if (children.style.display === 'none') {
             children.style.display = 'block';
+            item.textContent = '- ' + item.textContent.slice(2);
           }
           else {
             children.style.display = 'none';
+            item.textContent = '+ ' + item.textContent.slice(2);
           }
         }
       }

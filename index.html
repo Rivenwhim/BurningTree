@@ -60,15 +60,16 @@
       const children = item.querySelector('ul');
       if (children) {
 
-        const isTopLevel = item.parentElement.classList.contains('tree');
+        const isTopLevel = item.classList.contains('root');
         if (!isTopLevel) {
           children.style.display = 'none';
+        }
+        if (item.classList.contains('root')) {
+          item.prepend(document.createTextNode('- '));
+        }
         else {
-          item.firstChild.textContent = '- ';
+          item.prepend(document.createTextNode('+ '));
         }
-        }
-        
-        item.prepend(document.createTextNode('+ '));
         item.addEventListener('click', e => {
           e.stopPropagation();
           if (children.style.display === 'none') {

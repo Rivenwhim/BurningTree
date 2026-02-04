@@ -15,6 +15,9 @@
       padding-left: 0;
     }
     .tree li {
+      cursor: default;
+    }
+    .tree.expandable {
       cursor: pointer;
     }
   </style>
@@ -86,7 +89,7 @@
     items.forEach(item => {
       const children = item.querySelector('ul');
       if (children) {
-
+        item.classList.add('expandable');
         const isTopLevel = item.classList.contains('root');
         if (!isTopLevel) {
           children.style.display = 'none';

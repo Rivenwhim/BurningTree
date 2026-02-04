@@ -101,6 +101,7 @@
           item.prepend(document.createTextNode('+ '));
         }
         item.addEventListener('click', e => {
+          if (e.target !== item) return;
           e.stopPropagation();
           if (children.style.display === 'none') {
             children.style.display = 'block';
